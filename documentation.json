@@ -1,8 +1,126 @@
 {
   "name": "EZBiz Services",
-  "theme": "default",
-  "logo": "",
+  "initialRoute": "introduction",
+  "template": "classic",
+  "colors": {
+    "light": {
+      "brand": "#3143e3",
+      "heading": "#1a1a1a",
+      "text": "#374151"
+    },
+    "dark": {
+      "brand": "#85a1ff",
+      "heading": "#f2f2f2",
+      "text": "#c1c1c1"
+    }
+  },
   "metadata": {
     "description": "AI Front Office — AI-powered receptionist and automation platform for service businesses"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "icon": "book",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "rocket",
+            "pages": [
+              {
+                "title": "Introduction",
+                "path": "introduction"
+              },
+              {
+                "title": "Quickstart",
+                "path": "quickstart"
+              }
+            ]
+          },
+          {
+            "group": "Product",
+            "icon": "star",
+            "pages": [
+              {
+                "title": "Features",
+                "path": "features"
+              },
+              {
+                "title": "Integrations",
+                "path": "integrations"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "API",
+            "openapi": "api-reference/openapi.yaml",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "tab": "Help Center",
+        "icon": "life-ring",
+        "groups": [
+          {
+            "group": "Help",
+            "pages": [
+              {
+                "title": "Help Center",
+                "path": "help-center"
+              }
+            ]
+          },
+          {
+            "group": "FAQ",
+            "pages": [
+              {
+                "title": "Getting Started",
+                "path": "help-center/faq/getting-started"
+              }
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              {
+                "title": "Create a Project",
+                "path": "help-center/guides/create-project"
+              }
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              {
+                "title": "Login Issues",
+                "path": "help-center/troubleshooting/login-issues"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "clock",
+        "groups": [
+          {
+            "group": "Updates",
+            "pages": [
+              {
+                "title": "Changelog",
+                "path": "changelog"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
