@@ -1,0 +1,103 @@
+---
+title: Changelog
+description: Track the latest updates, improvements, and new features released in EzBiz Services to stay informed on platform enhancements.
+---
+
+## Recent Updates
+
+<Callout kind="info">
+EzBiz Services releases updates regularly to enhance automation for calls, texts, scheduling, and reporting. Check this changelog for new features, bug fixes, and migration guides.
+</Callout>
+
+<Update label="2024-11-15" description="v1.3.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added AI-powered review requests: Automatically send review links after completed jobs via SMS.
+- Enhanced appointment scheduling: Integrate with Google Calendar for real-time availability syncing.
+
+## Improvements
+
+- Reduced call handling latency by 40% for faster customer responses.
+- Improved text-back personalization using caller history.
+
+</Update>
+
+<Update label="2024-10-20" description="v1.2.1" tags={["bugfix", "improvement"]}>
+
+## Bug Fixes
+
+- Fixed missed call notifications not triggering during peak hours.
+- Resolved scheduling reminder duplicates for multi-location businesses.
+
+## Improvements
+
+- Updated reporting dashboard with export to CSV and PDF formats.
+- Better handling of international phone numbers in SMS flows.
+
+</Update>
+
+<Update label="2024-09-10" description="v1.2.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Introduced follow-up automation: Auto-schedule check-in texts 48 hours post-job.
+- Added real-time reporting API for custom integrations.
+
+## Breaking Changes
+
+- Deprecated legacy SMS gateway; migrate to new `smsProvider` config option.
+- Updated webhook payload format for call events—review your endpoints.
+
+</Update>
+
+## Upgrade Instructions
+
+EzBiz Services updates deploy automatically for most users. Follow these steps for any manual configurations or breaking changes.
+
+<Steps>
+  <Step title="Review Changelog" icon="book-open">
+    Check the tags above for `breaking` changes affecting your setup.
+  </Step>
+  <Step title="Update Configuration" icon="settings">
+    Log in to your dashboard at `https://dashboard.example.com` and verify settings.
+    
+    <CodeGroup tabs="Dashboard,API">
+    ````json
+    {
+      "smsProvider": "new-gateway",
+      "webhookUrl": "https://your-webhook-url.com/webhook"
+    }
+    ````
+    ````bash
+    curl -X PATCH https://api.example.com/v1/config \\
+      -H "Authorization: Bearer YOUR_API_KEY" \\
+      -d '{"smsProvider": "new-gateway"}'
+    ````
+    </CodeGroup>
+  </Step>
+  <Step title="Test Integrations" icon="zap">
+    Make a test call to `(601) 552-5990` and confirm notifications and scheduling work.
+  </Step>
+  <Step title="Monitor Dashboard" icon="activity">
+    Watch reports for 24 hours post-upgrade to ensure smooth operation.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+For v1.2.0 users, update your webhook handlers by November 30, 2024, to avoid disruptions.
+</Callout>
+
+## Resources
+
+<Columns cols={3}>
+  <Card title="Dashboard" icon="activity" href="https://dashboard.example.com">
+    Access live reports and settings.
+  </Card>
+  <Card title="API Reference" icon="code" href="/authentication">
+    Integrate with our APIs securely.
+  </Card>
+  <Card title="Support" icon="help-circle" href="/help-center">
+    Get help with upgrades or issues.
+  </Card>
+</Columns>

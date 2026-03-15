@@ -1,0 +1,143 @@
+---
+title: Getting Started with EzBiz Services
+description: Set up your EzBiz Services account and configure your first automated features in minutes to start handling calls and bookings immediately.
+---
+
+## Prerequisites
+
+<Callout kind="info" title="Before You Begin">
+Ensure you have:
+- A valid phone number for your service business
+- Access to your phone carrier account (for porting or forwarding)
+- An email address for account verification
+- Stripe account for billing (optional during trial)
+</Callout>
+
+## Create Your Account
+
+Sign up for EzBiz Services to access your automated front office dashboard. The process takes under 2 minutes.
+
+<Steps>
+  <Step title="Visit the Dashboard" icon="monitor">
+    Go to [https://dashboard.ezbizservices.com](https://dashboard.ezbizservices.com) and click **Sign Up**.
+  </Step>
+  <Step title="Enter Your Details" icon="user">
+    Provide your business name, email, and phone number. Create a strong password.
+  </Step>
+  <Step title="Verify Email" icon="mail">
+    Check your inbox for the verification link and click it to activate your account.
+  </Step>
+  <Step title="Log In" icon="log-in">
+    Return to the dashboard, enter your credentials, and access the setup wizard.
+  </Step>
+</Steps>
+
+## Run the Initial Setup Wizard
+
+The setup wizard guides you through essential configurations. Follow these steps to get live in minutes.
+
+<Steps>
+  <Step title="Select Your Plan" icon="credit-card">
+    Choose **Starter** (`$97/mo`) or higher. Start with the 30-day trial.
+  </Step>
+  <Step title="Configure Business Info" icon="settings">
+    Enter your service area, hours, and greeting message. Example: "Thanks for calling Ez Plumbing, how can we help?"
+  </Step>
+  <Step title="Set Up SMS Responses" icon="message-circle">
+    Enable auto-text-back for missed calls: "Sorry we missed you! We'll call back in 15 minutes."
+  </Step>
+</Steps>
+
+## Connect Your Phone Number
+
+Route calls to EzBiz Services by forwarding or porting your number.
+
+<Tabs>
+  <Tab title="Call Forwarding" icon="phone">
+    From your carrier account:
+    
+````bash
+*72 +1-601-552-5990  # Forward all calls (US carriers)
+*73                    # Disable forwarding
+````
+    
+    Test by calling your number — hear the AI receptionist.
+  </Tab>
+  <Tab title="Port Your Number" icon="upload">
+    In the dashboard:
+    
+    1. Go to **Phone Numbers > Port In**
+    2. Enter your number and carrier details
+    3. Submit — live in 24 hours
+    
+    <Callout kind="tip">
+      Porting keeps your existing number; no need to update marketing materials.
+    </Callout>
+  </Tab>
+</Tabs>
+
+## Configure Notifications and SMS
+
+Set up real-time alerts for calls and messages.
+
+<CodeGroup tabs="Dashboard Config,API Config">
+  ```json
+  {
+    "notifications": {
+      "sms_enabled": true,
+      "email_enabled": true,
+      "webhook_url": "https://your-webhook-url.com/ezbiz"
+    },
+    "sms_template": "New lead from {caller_name}: {message}"
+  }
+  ```
+  ```javascript
+  // POST to https://api.ezbizservices.com/v1/notifications
+  const config = {
+    sms_enabled: true,
+    webhook_url: 'https://your-webhook-url.com/ezbiz/webhook'
+  };
+  
+  fetch('https://api.ezbizservices.com/v1/notifications', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer YOUR_API_KEY' },
+    body: JSON.stringify(config)
+  });
+  ```
+</CodeGroup>
+
+<ParamField header="Authorization" param-type="string" required="true">
+  Bearer token: `Bearer YOUR_API_KEY`
+</ParamField>
+
+<ParamField body="sms_template" param-type="string" required="false">
+  Custom SMS response, e.g., "Thanks {caller_name}! We'll reply soon."
+</ParamField>
+
+## Test Your Setup
+
+Make a test call to your forwarded number. You should receive:
+- SMS alert with caller details
+- Dashboard notification
+- Auto-text-back to the caller
+
+<Callout kind="success">
+  Success! Your automated front office is live. Expect to recover missed calls immediately.
+</Callout>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Advanced Features" icon="sparkles" href="/configuration">
+    Customize AI responses, scheduling, and reviews.
+  </Card>
+  <Card title="Integrations" icon="plug" href="/authentication">
+    Connect Stripe, calendars, and webhooks.
+  </Card>
+  <Card title="Billing & Plans" icon="credit-card" href="/pricing">
+    Manage subscriptions and upgrade.
+  </Card>
+  <Card title="Support" icon="help-circle" href="/help-center">
+    FAQs, chat, and phone support.
+  </Card>
+</Columns>
